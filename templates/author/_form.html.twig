@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div class="container container-table">
+    <div class="form-group col-md-6">
+        <label >Author Name</label>
+        <input class="form-control" {{ form_widget(form.authorName) }}
+    </div>
+    <div class="form-group col-md-6">
+        <label >Creation Date</label>
+        <input class="form-control" {{ form_widget(form.birthday) }}
+    </div>
+    <div class="form-group col-md-6">
+        <label >Creation Date</label>
+        <input class="form-control" {{ form_widget(form.creationDate) }}
+    </div>
+    <div class="form-group col-md-6">
+        <label >Updation Date</label>
+        <input class="form-control" {{ form_widget(form.updationDate) }}
+    </div>
+    <div class="form-group col-md-6">
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+{{ form_end(form) }}

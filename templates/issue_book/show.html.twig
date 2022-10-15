@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IssueBook{% endblock %}
+
+{% block body %}
+    <h1>IssueBook</h1>
+<div class="container container-table">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ issue_book.id }}</td>
+            </tr>
+            <tr>
+                <th>Issue Book</th>
+                <td>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id book</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for book1 in issue_book.books %}
+                            <tr>
+                                <td>{{ book1.id }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </tr>
+            <tr>
+                <th>IssueDate</th>
+                <td>{{ issue_book.issueDate ? issue_book.issueDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ReturnDate</th>
+                <td>{{ issue_book.returnDate ? issue_book.returnDate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary"  href="{{ path('app_issue_book_index') }}">back to list</a>
+
+    <a class="btn btn-info" href="{{ path('app_issue_book_edit', {'id': issue_book.id}) }}">edit</a>
+</div>
+
+    {{ include('issue_book/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IssueBook index{% endblock %}
+
+{% block body %}
+    <h1>IssueBook index</h1>
+<div class="container container-table">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IssueDate</th>
+                <th>ReturnDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for issue_book in issue_books %}
+            <tr>
+                <td>{{ issue_book.id }}</td>
+                <td>
+                    {% for book1 in issue_book.books %}
+                        {{ book1.bookName }}
+                    {% else %}
+                        no records found
+                    {% endfor %}
+                </td>
+                <td>{{ issue_book.issueDate ? issue_book.issueDate|date('Y-m-d') : '' }}</td>
+                <td>{{ issue_book.returnDate ? issue_book.returnDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_issue_book_show', {'id': issue_book.id}) }}">show</a>
+                    <a class="btn btn-info" href="{{ path('app_issue_book_edit', {'id': issue_book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class="btn btn-warning"href="{{ path('app_issue_book_new') }}">Create new</a>
+</div>
+{% endblock %}

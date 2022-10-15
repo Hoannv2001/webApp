@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit IssueBook{% endblock %}
+
+{% block body %}
+    <h1>Edit IssueBook</h1>
+
+    {{ include('issue_book/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container container-table">
+        <a  class="btn btn-secondary" href="{{ path('app_issue_book_index') }}">back to list</a>
+    </div>
+    {{ include('issue_book/_delete_form.html.twig') }}
+{% endblock %}

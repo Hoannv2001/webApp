@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+<div class="container container-table">
+    <div class="form-group col-md-6">
+        <label >Issue Date</label>
+        <input class="form-control" {{ form_widget(form.issueDate) }}
+    </div>
+    <div class="form-group col-md-6">
+        <label >Return Date</label>
+        <input class="form-control" {{ form_widget(form.returnDate) }}
+    </div>
+    <div class="form-group col-md-6">
+        <label >Books</label>
+        <select id="disabledSelect" class="form-select"  {{ form_widget(form.books) }}
+    </div>
+    <div class="form-group col-md-6">
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+{{ form_end(form) }}
